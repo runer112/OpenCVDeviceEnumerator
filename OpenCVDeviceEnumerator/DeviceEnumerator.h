@@ -1,12 +1,17 @@
 #pragma once
 
-#include <Windows.h>
-#include <dshow.h>
+#ifndef DEVICEENUMERATOR_EXPORT
+#define DEVICEENUMERATOR_EXPORT __declspec(dllimport)
+#endif
+
+#include <guiddef.h>
 
 #pragma comment(lib, "strmiids")
 
 #include <map>
 #include <string>
+
+typedef wchar_t *BSTR;
 
 struct Device {
 	int id; // This can be used to open the device in OpenCV
@@ -14,7 +19,7 @@ struct Device {
 	std::string deviceName; // This can be used to show the devices to the user
 };
 
-class DeviceEnumerator {
+class DEVICEENUMERATOR_EXPORT DeviceEnumerator {
 
 public:
 
